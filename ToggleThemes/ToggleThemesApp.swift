@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct ToggleThemesApp: App {
+    @StateObject var themeProvider = ThemeProvider()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ThemedView().environmentObject(themeProvider)
         }
     }
 }
