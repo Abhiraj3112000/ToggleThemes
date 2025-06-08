@@ -14,11 +14,13 @@ struct ThemedView: View {
     let themes: [ThemeType] = [.light, .dark, .funky]
 
     var body: some View {
+        let theme = themeProvider.theme;
+        
         VStack(spacing: 20) {
             Text("Hello, User!")
                 .padding()
-                .foregroundColor(themeProvider.theme.primary)
-                .background(themeProvider.theme.surface)
+                .foregroundColor(theme.primary)
+                .background(theme.surface)
                 .cornerRadius(10)
             
             Button("Change Theme") {
@@ -32,13 +34,13 @@ struct ThemedView: View {
                 print("Theme changed to: \(newTheme)")
             }
             .padding()
-            .foregroundColor(themeProvider.theme.primary)
-            .background(themeProvider.theme.surface)
+            .foregroundColor(theme.primary)
+            .background(theme.surface)
             .cornerRadius(10)
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(themeProvider.theme.background)
+        .background(theme.background)
         .ignoresSafeArea()
     }
 }
