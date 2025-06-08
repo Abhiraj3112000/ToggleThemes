@@ -23,10 +23,13 @@ struct ThemedView: View {
             
             Button("Change Theme") {
                 // Choose a random theme
-                if let randomTheme = themes.randomElement() {
-                    themeProvider.setTheme(randomTheme)
-                    print("Theme changed to: \(randomTheme)")
-                }
+                var newTheme: ThemeType
+                repeat {
+                    newTheme = themes.randomElement()!
+                } while newTheme == themeProvider.currentThemeType
+
+                themeProvider.setTheme(newTheme)
+                print("Theme changed to: \(newTheme)")
             }
             .padding()
             .foregroundColor(themeProvider.theme.primary)
